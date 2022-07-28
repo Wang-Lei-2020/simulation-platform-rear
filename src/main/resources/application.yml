@@ -1,0 +1,21 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bookstore?serverTimezone=UTC
+    username: root
+    password: 123456
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+mybatis:
+  type-aliases-package: com.bjtu.simulation_platform_rear.entity
+  mapper-locations: classpath:mybatis/dao/*.xml
+#pagehelper分页插件配置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+
