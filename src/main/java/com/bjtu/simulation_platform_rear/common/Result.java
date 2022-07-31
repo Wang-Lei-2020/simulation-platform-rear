@@ -1,5 +1,8 @@
 package com.bjtu.simulation_platform_rear.common;
 
+/**
+ * @author Online
+ */
 public class Result<T> {
     private String code;
     private String msg;
@@ -39,14 +42,14 @@ public class Result<T> {
     public static Result success() {
         Result result = new Result<>();
         result.setCode("0");
-        result.setMsg("成功");
+        result.setMsg("success");
         return result;
     }
 
     public static <T> Result<T> success(T data) {
         Result<T> result = new Result<>(data);
         result.setCode("0");
-        result.setMsg("成功");
+        result.setMsg("success");
         return result;
     }
 
