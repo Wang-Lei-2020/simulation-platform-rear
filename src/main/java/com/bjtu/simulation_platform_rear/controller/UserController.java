@@ -27,11 +27,11 @@ public class UserController {
     private BCryptPasswordEncoder encoding;
 
     @PostMapping("/login")
-    public Result<User> login(@RequestParam String userName, @RequestParam String password, HttpServletRequest request){
+    public Result<User> login(@RequestParam String userName, @RequestParam String password, @RequestParam String role, HttpServletRequest request){
         try{
             User user = userService.findByUserName(userName);
             if (user != null){
-                if (encoding.matches(password,user.getPassword())){
+                if (encoding.matches(password,user.getPassword()) && (user.getRole().equals(role))){
                     //设置session值
                     HttpSession session = request.getSession();
                     session.setAttribute("user",user);
@@ -65,9 +65,6 @@ public class UserController {
             User existUser = userService.findByUserName(newUser.getUserName());
             if (existUser == null){
                 newUser.setPassword(encoding.encode(newUser.getPassword()));
-
-                //未实现角色管理！！！
-                newUser.setRole("student");
                 userService.register(newUser);
                 return Result.success();
             }else{
