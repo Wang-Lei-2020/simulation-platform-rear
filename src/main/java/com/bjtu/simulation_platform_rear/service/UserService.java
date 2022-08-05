@@ -16,17 +16,17 @@ public interface UserService {
 
     /**
      * 根据用户名查找
-     * @param userName
+     * @param userName 用户名
      * @return User
      */
     User findByUserName(String userName);
 
     /**
      * 根据真实姓名模糊查询用户个数
-     * @param RealName 真实姓名
+     * @param realName 真实姓名
      * @return int
      */
-    int countByRealName(String RealName);
+    int countByRealName(String realName);
 
     /**
      * 根据真实姓名查询用户列表
@@ -51,10 +51,10 @@ public interface UserService {
 
     /**
      * 根据Id返回加密后的密码
-     * @param id id
+     * @param userId id
      * @return String
      */
-    String getPasswordById(int id);
+    String getPasswordById(int userId);
 
     /**
      * 更新用户

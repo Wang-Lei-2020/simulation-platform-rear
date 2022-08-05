@@ -6,6 +6,8 @@ spring:
     url: jdbc:mysql://8.142.116.44:3306/simulation_platform
     username: root
     password: 123456
+    hikari:
+      max-lifetime: 50000
   servlet:
     multipart:
       max-file-size: 50MB

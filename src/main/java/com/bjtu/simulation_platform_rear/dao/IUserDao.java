@@ -55,10 +55,10 @@ public interface IUserDao {
 
     /**
      * 根据Id返回加密后的密码
-     * @param id id
+     * @param userId id
      * @return String
      */
-    String getPasswordById(int id);
+    String getPasswordById(int userId);
 
     /**
      * 更新用户

@@ -3,28 +3,40 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bjtu.simulation_platform_rear.dao.IUserDao">
-    <select id="findByUserName" parameterType="String" resultType="User">
-        select * from user where userName = #{userName}
+    <resultMap id="UserMap" type="com.bjtu.simulation_platform_rear.entity.User">
+        <result column="user_id" property="userId"/><!--id -->
+        <result column="user_name" property="userName"/><!--用户名 -->
+        <result column="real_name" property="realName"/><!--真实姓名 -->
+        <result column="phone" property="phone"/><!--手机 -->
+        <result column="description" property="description"/><!--描述 -->
+        <result column="password" property="password"/><!--密码 -->
+        <result column="email" property="email"/><!--邮箱 -->
+        <result column="sex" property="sex"/><!--性别 -->
+        <result column="role" property="role"/><!--角色 -->
+        <result column="logo_image" property="logoImage"/><!--头像地址 -->
+    </resultMap>
+    <select id="findByUserName" parameterType="String" resultMap="UserMap">
+        select * from user where user_name = #{userName}
     </select>
     <insert id="register" parameterType="User" useGeneratedKeys="true" keyProperty="id">
-        insert into user(userName,realName,password,sex,email,phone,description,logoImage,role) values (#{userName},#{realName},#{password},#{sex},#{email},#{phone},#{description},#{logoImage},#{role})
+        insert into user(user_name,real_name,password,sex,email,phone,description,logo_image,role) values (#{userName},#{realName},#{password},#{sex},#{email},#{phone},#{description},#{logoImage},#{role})
     </insert>
     <select id="countByRealName" parameterType="String" resultType="Integer">
-        select count(*) from user where realName like concat('%',#{realName},'%')
+        select count(*) from user where real_name like concat('%',#{realName},'%')
     </select>
-    <select id="searchByRealName" parameterType="String" resultType="User">
-        select * from user where realName like concat('%',#{realName},'%')
+    <select id="searchByRealName" parameterType="String" resultMap="UserMap">
+        select * from user where real_name like concat('%',#{realName},'%')
     </select>
-    <select id="getUserList" parameterType="int" resultType="User">
+    <select id="getUserList" parameterType="int" resultMap="UserMap">
         select * from user limit #{from},#{num}
     </select>
     <select id="getUserCount" resultType="Integer">
         select count(*) from user
     </select>
     <select id="getPasswordById" parameterType="int" resultType="String">
-        select password from user where id = #{id}
+        select password from user where user_id = #{userId}
     </select>
     <update id="update" parameterType="User">
-        update user set userName=#{userName},realName=#{realName},password=#{password},sex=#{sex},phone=#{phone},email=#{email},description=#{description} where id = #{id}
+        update user set user_name=#{userName},realname=#{realName},password=#{password},sex=#{sex},phone=#{phone},email=#{email},description=#{description} where user_id = #{userId}
     </update>
 </mapper>

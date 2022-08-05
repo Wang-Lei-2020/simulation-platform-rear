@@ -122,9 +122,9 @@ public class UserController {
     }
 
     @PostMapping("/checkPassword")
-    public Result<Integer> checkPassword(@RequestParam int id,@RequestParam String password){
+    public Result<Integer> checkPassword(@RequestParam int userId,@RequestParam String password){
         try{
-            if(encoding.matches(password,userService.getPasswordById(id))){
+            if(encoding.matches(password,userService.getPasswordById(userId))){
                 return Result.success(1);
             }else{
                 return Result.success(0);
