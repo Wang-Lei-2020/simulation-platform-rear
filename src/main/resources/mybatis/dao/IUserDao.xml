@@ -18,7 +18,7 @@
     <select id="findByUserName" parameterType="String" resultMap="UserMap">
         select * from user where user_name = #{userName}
     </select>
-    <insert id="register" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+    <insert id="register" parameterType="User" useGeneratedKeys="true" keyProperty="userId">
         insert into user(user_name,real_name,password,sex,email,phone,description,logo_image,role) values (#{userName},#{realName},#{password},#{sex},#{email},#{phone},#{description},#{logoImage},#{role})
     </insert>
     <select id="countByRealName" parameterType="String" resultType="Integer">
@@ -37,6 +37,6 @@
         select password from user where user_id = #{userId}
     </select>
     <update id="update" parameterType="User">
-        update user set user_name=#{userName},realname=#{realName},password=#{password},sex=#{sex},phone=#{phone},email=#{email},description=#{description} where user_id = #{userId}
+        update user set user_name=#{userName},real_name=#{realName},password=#{password},sex=#{sex},phone=#{phone},email=#{email},description=#{description} where user_id = #{userId}
     </update>
 </mapper>

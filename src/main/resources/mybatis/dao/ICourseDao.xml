@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjtu.simulation_platform_rear.dao.ICourseDao">
+    <resultMap id="CourseMap" type="com.bjtu.simulation_platform_rear.entity.Course">
+        <result column="course_id" property="courseId"/><!--id -->
+        <result column="course_name" property="courseName"/><!--课程名 -->
+        <result column="course_teacher" property="courseTeacher"/><!--任课教师 -->
+        <result column="course_file" property="courseFile"/><!--课程文件 -->
+        <result column="introduction" property="introduction"/><!--介绍 -->
+        <result column="course_credit" property="courseCredit"/><!--学分 -->
+        <result column="capacity" property="capacity"/><!--课容量 -->
+    </resultMap>
+    <resultMap id="PickCourseMap" type="com.bjtu.simulation_platform_rear.entity.PickCourse">
+        <result column="course_id" property="courseId"/><!--课程id -->
+        <result column="user_id" property="userId"/><!--用户id -->
+        <result column="grade" property="grade"/><!--成绩 -->
+        <result column="course_name" property="courseName"/><!--课程名 -->
+        <result column="course_teacher" property="courseTeacher"/><!--任课教师 -->
+        <result column="introduction" property="introduction"/><!--介绍 -->
+        <result column="course_credit" property="courseCredit"/><!--学分 -->
+        <result column="capacity" property="capacity"/><!--课容量 -->
+    </resultMap>
+    <select id="findByCourseName" parameterType="String" resultMap="CourseMap">
+        select * from course where course_name = #{courseName}
+    </select>
+    <insert id="addCourse" parameterType="Course" useGeneratedKeys="true" keyProperty="courseId">
+        insert into course(course_name,course_teacher,course_file,introduction,course_credit,capacity) values (#{courseName},#{courseTeacher},#{courseFile},#{introduction},#{courseCredit},#{capacity})
+    </insert>
+    <select id="countByCourseName" parameterType="String" resultType="Integer">
+        select count(*) from course where course_name like concat('%',#{courseName},'%')
+    </select>
+    <select id="searchByCourseName" parameterType="String" resultMap="CourseMap">
+        select * from course where course_name like concat('%',#{courseName},'%')
+    </select>
+    <select id="getCourseList" parameterType="int" resultMap="CourseMap">
+        select * from course limit #{from},#{num}
+    </select>
+    <select id="getCourseCount" resultType="Integer">
+        select count(*) from course
+    </select>
+    <update id="update" parameterType="Course">
+        update course set course_name=#{courseName},course_teacher=#{courseTeacher},course_file=#{courseFile},introduction=#{introduction},course_credit=#{courseCredit},capacity=#{capacity} where course_id = #{courseId}
+    </update>
+    <select id="findPickCourse" parameterType="int" resultMap="PickCourseMap">
+        select * from pickCourse where course_id = #{courseId} and user_id = #{userId}
+    </select>
+    <insert id="addPickCourse" parameterType="PickCourse">
+        insert into pickCourse(course_id,user_id) values(#{courseId},#{userId})
+    </insert>
+    <select id="getMyCourseList" parameterType="int" resultMap="PickCourseMap">
+
+    </select>
+</mapper>
