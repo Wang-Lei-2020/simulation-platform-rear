@@ -50,6 +50,6 @@
         insert into pickCourse(course_id,user_id) values(#{courseId},#{userId})
     </insert>
     <select id="getMyCourseList" parameterType="int" resultMap="PickCourseMap">
-
+        select * from pickCourse as p left join course as c on p.course_id = c.course_id where p.user_id = #{userId}
     </select>
 </mapper>
