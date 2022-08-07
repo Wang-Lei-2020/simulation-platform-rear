@@ -66,4 +66,19 @@ public class CourseServiceImpl implements CourseService {
     public List<PickCourse> getMyCourseList(int userId){
         return courseDao.getMyCourseList(userId);
     }
+
+    @Override
+    public void deleteCourse(int courseId){
+        courseDao.deleteCourse(courseId);
+    }
+
+    @Override
+    public void deletePickCourse(int courseId){
+        courseDao.deletePickCourse(courseId);
+    }
+
+    @Override
+    public void deletePickCourseWithUserId(PickCourse pickCourse){
+        courseDao.deletePickCourseWithUserId(pickCourse);
+    }
 }

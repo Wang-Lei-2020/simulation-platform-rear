@@ -2,7 +2,7 @@ package com.bjtu.simulation_platform_rear.service;
 
 import com.bjtu.simulation_platform_rear.entity.Course;
 import com.bjtu.simulation_platform_rear.entity.PickCourse;
-import org.springframework.security.core.parameters.P;
+import org.springframework.security.access.method.P;
 
 import java.util.List;
 
@@ -77,4 +77,22 @@ public interface CourseService {
      * @return list
      */
     List<PickCourse> getMyCourseList(int userId);
+
+    /**
+     * 删除课程
+     * @param courseId 课程id
+     */
+    void deleteCourse(int courseId);
+
+    /**
+     * 级联删除已选课程
+     * @param courseId 课程id
+     */
+    void deletePickCourse(int courseId);
+
+    /**
+     * 删除已选课程
+     * @param pickCourse 已选课
+     */
+    void deletePickCourseWithUserId(PickCourse pickCourse);
 }

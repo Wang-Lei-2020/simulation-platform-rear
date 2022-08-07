@@ -43,6 +43,15 @@
     <update id="update" parameterType="Course">
         update course set course_name=#{courseName},course_teacher=#{courseTeacher},course_file=#{courseFile},introduction=#{introduction},course_credit=#{courseCredit},capacity=#{capacity} where course_id = #{courseId}
     </update>
+    <delete id="deleteCourse" parameterType="int">
+        delete from course where course_id = #{courseId};
+    </delete>
+    <delete id="deletePickCourse" parameterType="int">
+        delete from pickCourse where course_id = #{courseId}
+    </delete>
+    <delete id="deletePickCourseWithUserId" parameterType="PickCourse">
+        delete from pickCourse where course_id = #{courseId} and user_id = #{userId}
+    </delete>
     <select id="findPickCourse" parameterType="int" resultMap="PickCourseMap">
         select * from pickCourse where course_id = #{courseId} and user_id = #{userId}
     </select>

@@ -16,4 +16,5 @@ public class Course {
     private String introduction;
     private int courseCredit;
     private int capacity;
+    private int leftCapacity;// TODO 尚未用到
 }

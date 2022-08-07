@@ -80,4 +80,23 @@ public interface ICourseDao {
      * @return list
      */
     List<PickCourse> getMyCourseList(int userId);
+
+    /**
+     * 删除课程
+     * @param courseId 课程id
+     */
+    void deleteCourse(int courseId);
+
+
+    /**
+     * 删除已选课程
+     * @param courseId 课程id
+     */
+    void deletePickCourse(int courseId);
+
+    /**
+     * 删除已选课程
+     * @param pickCourse 已选课
+     */
+    void deletePickCourseWithUserId(PickCourse pickCourse);
 }

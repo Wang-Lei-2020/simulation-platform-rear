@@ -118,4 +118,27 @@ public class CourseController {
             return null;
         }
     }
+
+    @PostMapping("/delete")
+    public Result deleteCourse(@RequestBody Course course){
+        try{
+            courseService.deleteCourse(course.getCourseId());
+            courseService.deletePickCourse(course.getCourseId());
+            return Result.success();
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @PostMapping("/deletePickCourse")
+    public Result deletePickCourseWithUserId(@RequestBody PickCourse pickCourse){
+        try{
+            courseService.deletePickCourseWithUserId(pickCourse);
+            return Result.success();
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
