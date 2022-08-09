@@ -39,4 +39,7 @@
     <update id="update" parameterType="User">
         update user set user_name=#{userName},real_name=#{realName},password=#{password},sex=#{sex},phone=#{phone},email=#{email},description=#{description} where user_id = #{userId}
     </update>
+    <update id="updateLogoImage" parameterType="User">
+        update user set logo_image = #{logoImage} where user_id = #{userId}
+    </update>
 </mapper>

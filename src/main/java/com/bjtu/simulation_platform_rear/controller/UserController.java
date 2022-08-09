@@ -174,4 +174,10 @@ public class UserController {
         dataResponse.setData(verificationCode);
         return dataResponse;
     }
+
+    @RequestMapping("/changePhoto")
+    private Result<User> updateLogoImage(@RequestBody User user){
+        userService.updateLogoImage(user);
+        return Result.success(user);
+    }
 }
