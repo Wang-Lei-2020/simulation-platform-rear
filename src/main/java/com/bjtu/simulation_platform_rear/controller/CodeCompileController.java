@@ -20,7 +20,7 @@ import static java.util.UUID.randomUUID;
 @Slf4j
 @RestController
 @RequestMapping("/code")
-public class codeCompileController {
+public class CodeCompileController {
     @PostMapping("/compile")
     public Result<String> compile(@RequestParam String code, @RequestParam String lang){
         File file = null;
@@ -64,6 +64,8 @@ public class codeCompileController {
                     cmd = new String[]{"cmd", "/c", commandHead + " " + file.getAbsolutePath().replace(".java", "")};
                     log.info(Arrays.toString(cmd));
                     ps = Runtime.getRuntime().exec(cmd);
+                    break;
+                default:
                     break;
             }
 
