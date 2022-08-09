@@ -4,6 +4,7 @@ import com.bjtu.simulation_platform_rear.common.Result;
 import com.bjtu.simulation_platform_rear.entity.User;
 import com.bjtu.simulation_platform_rear.service.UserService;
 import com.zhenzi.sms.ZhenziSmsClient;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
