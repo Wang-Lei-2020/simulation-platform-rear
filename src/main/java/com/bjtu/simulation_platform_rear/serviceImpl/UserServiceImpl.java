@@ -55,4 +55,9 @@ public class UserServiceImpl implements UserService {
     public void update(User user){
         userDao.update(user);
     }
+
+    @Override
+    public void updateLogoImage(User user){
+        userDao.updateLogoImage(user);
+    }
 }

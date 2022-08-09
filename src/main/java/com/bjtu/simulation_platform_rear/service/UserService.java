@@ -61,4 +61,10 @@ public interface UserService {
      * @param user 用户
      */
     void update(User user);
+
+    /**
+     * 更改头像
+     * @param user 用户
+     */
+    void updateLogoImage(User user);
 }

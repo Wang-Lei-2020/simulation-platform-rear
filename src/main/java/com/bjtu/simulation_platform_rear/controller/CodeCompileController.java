@@ -18,7 +18,7 @@ import static java.util.UUID.randomUUID;
 @Slf4j
 @RestController
 @RequestMapping("/code")
-public class codeCompileController {
+public class CodeCompileController {
     @PostMapping("/compile")
     public Result<String> compile(@RequestParam String code, @RequestParam String lang){
         try{
@@ -57,6 +57,8 @@ public class codeCompileController {
                 case "java":
                     compileProcess = Runtime.getRuntime().exec(new String[]{"cmd", "/c", "javac " +
                             file.getAbsolutePath() + " && java -cp " + filepath + " Solution"});
+                    break;
+                default:
                     break;
             }
 
