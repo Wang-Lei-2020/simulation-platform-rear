@@ -25,8 +25,6 @@ public class CourseController {
             if (existCourse != null && existCourse.getCourseTeacher().equals(newCourse.getCourseTeacher())){
                 return Result.error("1", "该课程您已添加！");
             }else{
-                //未实现上传课程文件！！！
-                newCourse.setCourseFile("");
                 courseService.addCourse(newCourse);
                 return Result.success();
             }
@@ -77,15 +75,8 @@ public class CourseController {
     @RequestMapping("/update")
     private Result<Course> updateCourse(@RequestBody Course course){
         try{
-            Course existCourse = courseService.findByCourseName(course.getCourseName());
-            if (existCourse != null && existCourse.getCourseTeacher().equals(course.getCourseTeacher())){
-                return Result.error("1", "该课程您已添加！");
-            }else{
-                //未实现上传课程文件！！！
-                course.setCourseFile("");
-                courseService.update(course);
-                return Result.success(course,"更新成功！");
-            }
+            courseService.update(course);
+            return Result.success(course,"更新成功！");
         }catch (Exception e){
             e.printStackTrace();
             return null;
