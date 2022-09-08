@@ -22,7 +22,7 @@ public class CrosConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginHandlerInterceptor())
-                .addPathPatterns("/book/read","/book/download","/book/addbook","/book/delbook","/login/logout")
+                .addPathPatterns("exercise/uploadGroup","/book/read","/book/download","/book/addbook","/book/delbook","/login/logout")
                 .excludePathPatterns("/", "/index.html", "/login", "/register", "/css/**", "/js/**", "/img/**");
     }
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjtu.simulation_platform_rear.dao.IExerciseDao">
+    <select id="getGroupList" parameterType="int" resultType="com.bjtu.simulation_platform_rear.entity.Exercise">
+        select * from Exercise where course_id=#{courseId};
+    </select>
+    <select id="getExerciseList" resultType="com.bjtu.simulation_platform_rear.entity.Exercise">
+        select * from Exercise where course_id=#{courseId} and group_name=#{groupName};
+    </select>
+    <insert id="addGroup">
+        insert into Exercise values
+        <foreach collection="group" item="exercise" separator=",">
+            (#{exercise.courseId},#{exercise.groupName},default ,#{exercise.exerciseName},#{exercise.sectionA},
+            #{exercise.sectionB},#{exercise.sectionC},#{exercise.sectionD},#{exercise.rightAnswer},#{exercise.analysis})
+        </foreach>
+    </insert>
+    <delete id="deleteGroup">
+        delete from Exercise where course_id=#{courseId} and group_name=#{groupName};
+    </delete>
+</mapper>
