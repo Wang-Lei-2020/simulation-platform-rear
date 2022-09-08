@@ -15,6 +15,13 @@ spring:
 mybatis:
   type-aliases-package: com.bjtu.simulation_platform_rear.entity
   mapper-locations: classpath:mybatis/dao/*.xml
+mybatis-plus:
+#  configuration:
+#  global-config:
+#    db-config:
+  type-aliases-package: com.bjtu.simulation_platform_rear.entity
+  mapper-locations: classpath:mybatis/dao/*.xml
+
 #pagehelper分页插件配置
 pagehelper:
   helper-dialect: mysql
