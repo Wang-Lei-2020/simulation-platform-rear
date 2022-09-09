@@ -8,7 +8,7 @@
         <result column="user_name" property="userName"/><!--用户名 -->
         <result column="real_name" property="realName"/><!--真实姓名 -->
         <result column="phone" property="phone"/><!--手机 -->
-        <result column="description" property="description"/><!--描述 -->
+<!--        <result column="description" property="description"/>&lt;!&ndash;描述 &ndash;&gt;-->
         <result column="password" property="password"/><!--密码 -->
         <result column="email" property="email"/><!--邮箱 -->
         <result column="sex" property="sex"/><!--性别 -->
@@ -19,7 +19,7 @@
         select * from user where user_name = #{userName}
     </select>
     <insert id="register" parameterType="User" useGeneratedKeys="true" keyProperty="userId">
-        insert into user(user_name,real_name,password,sex,email,phone,description,logo_image,role) values (#{userName},#{realName},#{password},#{sex},#{email},#{phone},#{description},#{logoImage},#{role})
+        insert into user(user_name,real_name,password,sex,email,phone,logo_image,role) values (#{userName},#{realName},#{password},#{sex},#{email},#{phone},#{logoImage},#{role})
     </insert>
     <select id="countByRealName" parameterType="String" resultType="Integer">
         select count(*) from user where real_name like concat('%',#{realName},'%')
@@ -37,7 +37,7 @@
         select password from user where user_id = #{userId}
     </select>
     <update id="update" parameterType="User">
-        update user set user_name=#{userName},real_name=#{realName},password=#{password},sex=#{sex},phone=#{phone},email=#{email},description=#{description} where user_id = #{userId}
+        update user set user_name=#{userName},real_name=#{realName},password=#{password},sex=#{sex},phone=#{phone},email=#{email} where user_id = #{userId}
     </update>
     <update id="updateLogoImage" parameterType="User">
         update user set logo_image = #{logoImage} where user_id = #{userId}
