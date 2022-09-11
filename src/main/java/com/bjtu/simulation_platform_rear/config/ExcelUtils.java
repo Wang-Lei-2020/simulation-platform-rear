@@ -177,7 +177,7 @@ public class ExcelUtils {
 
             // 解析每一行的数据，构造数据对象
             int rowStart = firstRowNum; //获取第几行
-            //获得当前行的列数
+            //获得当前表的行数
             int rowEnd = sheet.getPhysicalNumberOfRows();
 
             for (int rowNum = rowStart; rowNum < rowEnd; rowNum++) {
@@ -186,7 +186,7 @@ public class ExcelUtils {
                 if (null == row) {
                     continue;
                 }
-                //列List
+                //行List
                 List<String> cellList=new ArrayList<>();
                     //转换为List数组
                 for (int cellNum=0;cellNum< row.getLastCellNum();cellNum++){
@@ -215,7 +215,8 @@ public class ExcelUtils {
     private static String convertCellValueToString(Cell cell) {
         String returnValue = null;
         if(cell==null){
-            return returnValue;
+//            return returnValue;
+            return "";
         }
         //如果当前单元格内容为日期类型，需要特殊处理
         String dataFormatString = cell.getCellStyle().getDataFormatString();
@@ -239,6 +240,8 @@ public class ExcelUtils {
                 returnValue = booleanValue.toString();
                 break;
             case BLANK:     // 空值
+                //新添加，把空单元格赋值为空字符串
+                returnValue = "";
                 break;
             case FORMULA:   // 公式
                 returnValue = cell.getCellFormula();

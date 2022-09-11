@@ -31,4 +31,10 @@ public interface IExerciseDao {
      * @param  courseId,groupName
      */
     void deleteGroup(int courseId, String groupName);
+    /**
+     * 查询题目是否已存在
+     * @param  courseId,groupName,exerciseName)
+     */
+    List<Exercise> findExerciseByCGE(int courseId,String groupName,String exerciseName);
+
 }

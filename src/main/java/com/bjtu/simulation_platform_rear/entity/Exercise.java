@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
@@ -28,8 +29,10 @@ public class Exercise {
     @TableField("section_b")
     private String sectionB;
     @TableField("section_c")
+//    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String sectionC;
     @TableField("section_d")
+//    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String sectionD;
     @TableField("right_answer")
     private String rightAnswer;
