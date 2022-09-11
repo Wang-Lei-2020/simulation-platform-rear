@@ -52,7 +52,8 @@ public class CodeCompileController {
             Process compileProcess = null;
             switch (lang){
                 case "python":
-                    compileProcess = Runtime.getRuntime().exec(new String[]{"cmd", "/c", "python" + " " + file.getAbsolutePath()});
+//                    compileProcess = Runtime.getRuntime().exec(new String[]{"cmd", "/c", "python" + " " + file.getAbsolutePath()});
+                    compileProcess = Runtime.getRuntime().exec("python" + " " + file.getAbsolutePath());
                     break;
                 case "java":
                     compileProcess = Runtime.getRuntime().exec(new String[]{"cmd", "/c", "javac " +
