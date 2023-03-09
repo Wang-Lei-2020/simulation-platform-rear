@@ -31,8 +31,9 @@ public class ExerciseController {
 //        List<Exercise> list = iExerciseDao.selectOne()
         try {
             List<Exercise> exerciseList = iExerciseDao.getExerciseList(exercise.getCourseId(),exercise.getGroupName());
-            for(Exercise ex :exerciseList)
+            for(Exercise ex :exerciseList) {
                 System.out.println(ex.toString());
+            }
             if(exerciseList!=null){
                 return Result.success(exerciseList);
             }

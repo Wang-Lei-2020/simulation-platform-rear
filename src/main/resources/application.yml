@@ -3,8 +3,8 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://8.142.116.44:3306/simulation_platform
-    username: root
+    url: jdbc:mysql://59.110.6.137:3306/simulation
+    username: wanglei
     password: 123456
     hikari:
       max-lifetime: 50000
